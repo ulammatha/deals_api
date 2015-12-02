@@ -1,4 +1,4 @@
-class VendorsController < ApplicationController
+class Api::V1::VendorsController < ApiController
   before_action :set_vendor, only: [:show, :update, :destroy]
 
   def index
@@ -15,7 +15,7 @@ class VendorsController < ApplicationController
     @vendor = Vendor.new(vendor_params)
 
     if @vendor.save
-      render json: @vendor, status: :created, location: @vendor
+      render json: @vendor, status: :created, location: false
     else
       render json: @vendor.errors, status: :unprocessable_entity
     end

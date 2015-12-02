@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
-  root to: 'vendors#index'
-  resources :vendors, only: [:index, :show, :create, :update, :destroy]
+  root to:  'api/v1/vendors#index'
+
+  scope module: 'api', defaults: { format: :json } do
+    namespace :v1 do
+      resources :vendors, only: [:index, :show, :create, :update, :destroy]
+    end
+  end
+
 end
