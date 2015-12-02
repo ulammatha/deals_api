@@ -1,4 +1,4 @@
-class ApiController < ActionController::Base
+class ApiController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   include Renderable
 
