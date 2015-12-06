@@ -17,7 +17,8 @@ class Api::V1::VendorsController < ApiController
     if @vendor.save
       render json: @vendor, status: :created, location: false
     else
-      render json: @vendor.errors, status: :unprocessable_entity
+      render_unprocessable_entity_response(@vendor.errors)
+      # render json: @vendor.errors, status: :unprocessable_entity
     end
   end
 
@@ -27,7 +28,8 @@ class Api::V1::VendorsController < ApiController
     if @vendor.update(vendor_params)
       head :no_content
     else
-      render json: @vendor.errors, status: :unprocessable_entity
+      render_unprocessable_entity_response(@vendor.errors)
+      # render json: @vendor.errors, status: :unprocessable_entity
     end
   end
 
