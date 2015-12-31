@@ -4,7 +4,11 @@ class Api::V1::VendorsController < ApiController
   def index
     @vendors = Vendor.all
 
-    render json: @vendors
+    render(
+      json: @vendors,
+      serializer: Api::V1::VendorSerializer,
+      status: 200
+    )
   end
 
   def show
