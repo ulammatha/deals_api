@@ -2,9 +2,14 @@ class Api::V1::RestaurantsController < ApiController
   before_action :set_restaurant, only: [:show, :update, :destroy]
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.includes(:deals).all
 
-    render json: @restaurants
+    render(
+      json: @restaurants,
+      each_serializer: Api::V1::RestaurantSerializer,
+      root: false,
+      status: 200
+    )
   end
 
   def show

@@ -1,7 +1,7 @@
 class Api::V1::VendorSerializer < ActiveModel::Serializer
-  attributes :id, :last_name, :phone
+  attributes :id, :full_name, :phone, :email
 
-  def last_name
+  def full_name
     object.first_name + " " + object.last_name
   end
 end
