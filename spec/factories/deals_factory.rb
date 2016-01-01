@@ -1,14 +1,15 @@
 include ActionDispatch::TestProcess
 
 FactoryGirl.define do
-  factory :restaurant do
-    vendor
-    name "first_restaurant"
-    description "restaurant_description"
-    phone "555-666-1234"
-    email {"#{name}.@example.com"}
-    address "Sunnyvale"
-    rating 1
+  factory :deal do
+    restaurant
+    name "deal_name"
+    description "fake description"
+    current_amount 12.45
+    previous_amount 25.00
+    expiry 10.days.from_now
+    available_coupons 10
+    sold_coupons 0
     image {
       fixture_file_upload(
         Rails.root.join(

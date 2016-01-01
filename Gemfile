@@ -3,8 +3,9 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5'
 gem 'rails-api'
 gem 'mysql2', '~> 0.4.1'
-gem 'active_model_serializers'
-
+#  issue with active model serializers '~>0.9' version
+gem 'active_model_serializers', '~> 0.8.3'
+gem "paperclip", "~> 4.3"
 
 group :development do
   gem 'spring'

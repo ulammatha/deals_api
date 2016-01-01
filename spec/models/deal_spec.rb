@@ -1,14 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe Restaurant, type: :model do
+RSpec.describe Deal, type: :model do
   describe 'db structure' do
     it { is_expected.to have_db_column(:name).of_type(:string) }
     it { is_expected.to have_db_column(:description).of_type(:text) }
-    it { is_expected.to have_db_column(:phone).of_type(:string) }
-    it { is_expected.to have_db_column(:email).of_type(:string) }
-    it { is_expected.to have_db_column(:address).of_type(:text) }
-    it { is_expected.to have_db_column(:rating).of_type(:integer) }
-    it { is_expected.to have_db_column(:vendor_id).of_type(:integer) }
+    it { is_expected.to have_db_column(:current_amount).of_type(:decimal) }
+    it { is_expected.to have_db_column(:previous_amount).of_type(:decimal) }
+    it { is_expected.to have_db_column(:expiry).of_type(:datetime) }
+    it { is_expected.to have_db_column(:available_coupons).of_type(:integer) }
+    it { is_expected.to have_db_column(:sold_coupons).of_type(:integer) }
+    it { is_expected.to have_db_column(:restaurant_id).of_type(:integer) }
     it { is_expected.to have_db_column(:image_file_name).of_type(:string) }
     it { is_expected.to have_db_column(:image_content_type).of_type(:string) }
     it { is_expected.to have_db_column(:image_file_size).of_type(:integer) }
@@ -18,17 +19,19 @@ RSpec.describe Restaurant, type: :model do
   end
 
   describe 'associations' do
-    it { is_expected.to belong_to(:vendor) }
+    it { is_expected.to belong_to(:restaurant) }
   end
 
   describe 'validations' do
-    subject { create(:restaurant) }
+    subject { create(:deal) }
 
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:description) }
-    it { is_expected.to validate_presence_of(:phone) }
-    it { is_expected.to validate_presence_of(:email) }
-    it { is_expected.to validate_presence_of(:address) }
+    it { is_expected.to validate_presence_of(:current_amount) }
+    it { is_expected.to validate_presence_of(:previous_amount) }
+    it { is_expected.to validate_presence_of(:expiry) }
+    it { is_expected.to validate_presence_of(:available_coupons) }
+    it { is_expected.to validate_presence_of(:sold_coupons) }
     it { is_expected.to validate_presence_of(:image) }
   end
 end

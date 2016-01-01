@@ -13,7 +13,6 @@ class Api::V1::RestaurantsController < ApiController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-
     if @restaurant.save
       render json: @restaurant, status: :created, location: false
     else
@@ -44,6 +43,6 @@ class Api::V1::RestaurantsController < ApiController
     end
 
     def restaurant_params
-      params.require(:restaurant).permit(:name, :description, :phone, :email, :address, :rating, :vendor_id)
+      params.require(:restaurant).permit(:name, :description, :phone, :email, :address, :rating, :image, :vendor_id)
     end
 end

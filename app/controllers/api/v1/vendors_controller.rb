@@ -6,7 +6,8 @@ class Api::V1::VendorsController < ApiController
 
     render(
       json: @vendors,
-      serializer: Api::V1::VendorSerializer,
+      each_serializer: Api::V1::VendorSerializer,
+      root: false,
       status: 200
     )
   end
